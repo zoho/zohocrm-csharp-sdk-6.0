@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Reflection;
-using System.Text;
-using Com.Zoho.API.Authenticator.Store;
+﻿using Com.Zoho.API.Authenticator.Store;
 using Com.Zoho.API.Exception;
 using Com.Zoho.Crm.API;
 using Com.Zoho.Crm.API.Dc;
 using Com.Zoho.Crm.API.Logger;
 using Com.Zoho.Crm.API.Util;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Reflection;
+using System.Text;
 using Environment = Com.Zoho.Crm.API.Dc.DataCenter.Environment;
 
 namespace Com.Zoho.API.Authenticator
@@ -228,22 +228,22 @@ namespace Com.Zoho.API.Authenticator
                     }
                     if (oauthToken == null)
                     {
-                        if(this.UserSignature != null)
+                        if (this.UserSignature != null)
                         {
                             CheckTokenDetails();
                         }
                         oauthToken = this;
                     }
-                    if(oauthToken.APIDomain == null || oauthToken.APIDomain.Length <= 0)
+                    if (oauthToken.APIDomain == null || oauthToken.APIDomain.Length <= 0)
                     {
-                        if(initializer.Environment == null)
+                        if (initializer.Environment == null)
                         {
                             throw new SDKException(Constants.ENVIRONMENT_ERROR_1, Constants.ENVIRONMENT_ERROR_MESSAGE + " : ");
                         }
                         oauthToken.APIDomain = initializer.Environment.GetUrl();
                     }
                     Environment environment = DataCenter.Get(oauthToken.APIDomain);
-                    if(environment != null)
+                    if (environment != null)
                     {
                         Type cl = initializer.GetType();
                         try
@@ -258,7 +258,7 @@ namespace Com.Zoho.API.Authenticator
                     }
                     else
                     {
-                        if(initializer.Environment == null)
+                        if (initializer.Environment == null)
                         {
                             throw new SDKException(Constants.ENVIRONMENT_ERROR_1, Constants.ENVIRONMENT_ERROR_MESSAGE + " : ");
                         }
@@ -289,16 +289,16 @@ namespace Com.Zoho.API.Authenticator
                     {
                         save = true;
                     }
-                    if(save)
+                    if (save)
                     {
                         try
                         {
-                            if(oauthToken.UserSignature == null && oauthToken.findUser)
+                            if (oauthToken.UserSignature == null && oauthToken.findUser)
                             {
                                 try
                                 {
                                     string userName = new Utility().GetUserName(oauthToken.accessToken);
-                                    if(userName != null)
+                                    if (userName != null)
                                     {
                                         oauthToken.UserSignature = new UserSignature(userName);
                                     }
@@ -310,7 +310,7 @@ namespace Com.Zoho.API.Authenticator
                             }
                             store.SaveToken(oauthToken);
                         }
-                        catch(System.Exception ex)
+                        catch (System.Exception ex)
                         {
                             throw new SDKException(Constants.SAVE_TOKEN_ERROR, ex);
                         }
@@ -335,7 +335,7 @@ namespace Com.Zoho.API.Authenticator
 
         public void Authenticate(APIHTTPConnector urlConnection)
         {
-            if(!urlConnection.Headers.ContainsKey(Constants.AUTHORIZATION))
+            if (!urlConnection.Headers.ContainsKey(Constants.AUTHORIZATION))
             {
                 urlConnection.AddHeader(Constants.AUTHORIZATION, Constants.OAUTH_HEADER_PREFIX + GetToken());
             }
@@ -461,7 +461,7 @@ namespace Com.Zoho.API.Authenticator
                 JObject responseJSON = JObject.Parse(response);
                 if (!responseJSON.ContainsKey(Constants.ACCESS_TOKEN))
                 {
-                    throw new SDKException(Constants.INVALID_TOKEN_ERROR, (responseJSON.ContainsKey(Constants.ERROR_KEY))? responseJSON[Constants.ERROR_KEY].ToString() : Constants.NO_ACCESS_TOKEN_ERROR);
+                    throw new SDKException(Constants.INVALID_TOKEN_ERROR, (responseJSON.ContainsKey(Constants.ERROR_KEY)) ? responseJSON[Constants.ERROR_KEY].ToString() : Constants.NO_ACCESS_TOKEN_ERROR);
                 }
                 oauthToken.AccessToken = responseJSON[Constants.ACCESS_TOKEN].ToString();
                 oauthToken.ExpiresIn = GetTokenExpiresIn(responseJSON).ToString();
@@ -505,7 +505,7 @@ namespace Com.Zoho.API.Authenticator
                 }
                 Initializer.GetInitializer().Store.DeleteToken(this.Id);
             }
-            catch (System.Exception ex) when (!(ex is SDKException))
+            catch (System.Exception ex) when (ex is not SDKException)
             {
                 throw ex;
             }
@@ -667,22 +667,22 @@ namespace Com.Zoho.API.Authenticator
             public OAuthToken Build()
             {
                 if (AreAllObjectsNull(this.grantToken, this.refreshToken, this.id, this.accessToken, this.userSignature))
-			    {
-				    throw new SDKException(Constants.MANDATORY_VALUE_ERROR, Constants.MANDATORY_KEY_ERROR + " - " + string.Join(", ", Constants.OAUTH_MANDATORY_KEYS));
-			    }
-			    if (!AreAllObjectsNull(this.grantToken, this.refreshToken))
-			    {
-				    if (AreAllObjectsNull(this.clientId, this.clientSecret))
-				    {
-					    throw new SDKException(Constants.MANDATORY_VALUE_ERROR, Constants.MANDATORY_KEY_ERROR + " - " + string.Join(", ", Constants.OAUTH_MANDATORY_KEYS1));
-				    }
-				    else
-				    {
-					    Utility.AssertNotNull(this.clientId, Constants.MANDATORY_VALUE_ERROR, Constants.MANDATORY_KEY_ERROR + " - " + Constants.CLIENT_ID);
-					    Utility.AssertNotNull(this.clientSecret, Constants.MANDATORY_VALUE_ERROR, Constants.MANDATORY_KEY_ERROR + " - " + Constants.CLIENT_SECRET);
-				    }
-			    }
-			    return new OAuthToken(this.clientId, this.clientSecret, this.grantToken, this.refreshToken, this.redirectURL, this.id, this.accessToken, this.userSignature, this.findUser);
+                {
+                    throw new SDKException(Constants.MANDATORY_VALUE_ERROR, Constants.MANDATORY_KEY_ERROR + " - " + string.Join(", ", Constants.OAUTH_MANDATORY_KEYS));
+                }
+                if (!AreAllObjectsNull(this.grantToken, this.refreshToken))
+                {
+                    if (AreAllObjectsNull(this.clientId, this.clientSecret))
+                    {
+                        throw new SDKException(Constants.MANDATORY_VALUE_ERROR, Constants.MANDATORY_KEY_ERROR + " - " + string.Join(", ", Constants.OAUTH_MANDATORY_KEYS1));
+                    }
+                    else
+                    {
+                        Utility.AssertNotNull(this.clientId, Constants.MANDATORY_VALUE_ERROR, Constants.MANDATORY_KEY_ERROR + " - " + Constants.CLIENT_ID);
+                        Utility.AssertNotNull(this.clientSecret, Constants.MANDATORY_VALUE_ERROR, Constants.MANDATORY_KEY_ERROR + " - " + Constants.CLIENT_SECRET);
+                    }
+                }
+                return new OAuthToken(this.clientId, this.clientSecret, this.grantToken, this.refreshToken, this.redirectURL, this.id, this.accessToken, this.userSignature, this.findUser);
             }
         }
     }

@@ -1,14 +1,10 @@
-﻿using System.Collections.Generic;
-using Com.Zoho.API.Exception;
+﻿using Com.Zoho.API.Exception;
 using Com.Zoho.Crm.API;
 using Com.Zoho.Crm.API.Util;
 using MySql.Data.MySqlClient;
-using System.Text;
 using System;
-using Com.Zoho.API.Authenticator;
-using System.Xml.Linq;
-using System.Management.Instrumentation;
-using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Com.Zoho.API.Authenticator.Store
 {
@@ -101,7 +97,7 @@ namespace Com.Zoho.API.Authenticator.Store
         public void SaveToken(IToken token)
         {
             if (token is not OAuthToken)
-		    {
+            {
                 return;
             }
             try
@@ -140,7 +136,7 @@ namespace Com.Zoho.API.Authenticator.Store
                     {
                         rowsAffected = command.ExecuteNonQuery();
                     }
-                    if(rowsAffected == 0)
+                    if (rowsAffected == 0)
                     {
                         string createquery = "insert into " + this.tableName + "(id,user_name,client_id,client_secret,refresh_token,access_token,grant_token,expiry_time,redirect_url,api_domain) values (@id, @user_name, @client_id, @client_secret, @refresh_token, @access_token, @grant_token, @expiry_time, @redirect_url,@api_domain);";
                         if (oauthToken.Id != null || oauthToken.UserSignature != null)
@@ -282,20 +278,20 @@ namespace Com.Zoho.API.Authenticator.Store
         }
 
         private void SetMergeData(OAuthToken oauthToken, MySqlDataReader result)
-	    {
-		    if (oauthToken.Id == null)
-		    {
+        {
+            if (oauthToken.Id == null)
+            {
                 oauthToken.Id = result[Constants.ID].ToString();
-		    }
-		    if (oauthToken.UserSignature == null)
-		    {
-			    string name = result[Constants.USER_NAME].ToString();
-			    if (name != null)
-			    {
-				    oauthToken.UserSignature = new UserSignature(name);
-			    }
-		    }
-		    if (oauthToken.ClientId == null)
+            }
+            if (oauthToken.UserSignature == null)
+            {
+                string name = result[Constants.USER_NAME].ToString();
+                if (name != null)
+                {
+                    oauthToken.UserSignature = new UserSignature(name);
+                }
+            }
+            if (oauthToken.ClientId == null)
             {
                 oauthToken.ClientId = result[Constants.CLIENT_ID].ToString();
             }
@@ -331,7 +327,7 @@ namespace Com.Zoho.API.Authenticator.Store
             {
                 oauthToken.APIDomain = result[Constants.API_DOMAIN].ToString();
             }
-	    }
+        }
 
         private string SetToken(OAuthToken oauthToken)
         {
@@ -387,8 +383,8 @@ namespace Com.Zoho.API.Authenticator.Store
         private int GenerateId()
         {
             int id = 0;
-		    try
-		    {
+            try
+            {
                 using (MySqlConnection connection = new MySqlConnection(this.connectionString))
                 {
                     connection.Open();
@@ -405,10 +401,10 @@ namespace Com.Zoho.API.Authenticator.Store
                                     return (int)(max + 1);
                                 }
                             }
-					    }
-				    }
-			    }
-		    }
+                        }
+                    }
+                }
+            }
             catch (System.Exception ex)
             {
                 throw new SDKException(Constants.TOKEN_STORE, Constants.GENERATE_TOKEN_ID_ERROR, ex);

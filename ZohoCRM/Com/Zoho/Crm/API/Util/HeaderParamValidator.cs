@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Management.Instrumentation;
 using System.Reflection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Com.Zoho.Crm.API.Util
 {
@@ -122,9 +121,9 @@ namespace Com.Zoho.Crm.API.Util
 
         public string GetClassName(string canonicalName)
         {
-            if(canonicalName.Contains("."))
+            if (canonicalName.Contains("."))
             {
-            string[] packages = canonicalName.Split('.');
+                string[] packages = canonicalName.Split('.');
                 List<string> fileName = new List<string>();
                 for (int i = 0; i < packages.Length; i++)
                 {
