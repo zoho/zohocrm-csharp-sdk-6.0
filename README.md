@@ -25,18 +25,23 @@ License
 
 ## Latest Version
 
+- [2.0.0](/versions/2.0.0/ZohoCRM/README.md)
+
+    - C# SDK Fields meta handling in Utility class.
+
 - [1.0.0](/versions/1.0.0/ZohoCRM/README.md)
 
     - C# SDK upgraded to support v6 APIs.
 
     - C# SDK improved to support the following new APIs
 
-      - [Unsubscribe Links](https://www.zoho.com/crm/developer/docs/api/v6/get-unsubscribe-links.html)
-      - [Find and Merge API](https://www.zoho.com/crm/developer/docs/api/v6/merge-records.html)
-      - [Get Related Records of Deleted Record API](https://www.zoho.com/crm/developer/docs/api/v6/get-related-records-of-deleted-record.html)
-      - [Features API](https://www.zoho.com/crm/developer/docs/api/v6/get-features.html)
-      - [Global Picklist API](https://www.zoho.com/crm/developer/docs/api/v6/get-global-picklist.html)
-      - [Unblock Email API](https://www.zoho.com/crm/developer/docs/api/v6/unblock-emails.html)
+        - Unsubscribe Links
+        - Find and Merge API
+        - Get Related Records of Deleted Record API
+        - Digest API
+        - Features API
+        - Global Picklist API
+        - Unblock Email API  
 
 
 For older versions, please [refer](https://github.com/zoho/zohocrm-csharp-sdk-6.0/releases).
@@ -56,7 +61,7 @@ You can include the SDK to your project using:
     - Package Manager
 
         ```sh
-        Install-Package ZOHOCRMSDK-6.0 -Version 1.0.0
+        Install-Package ZOHOCRMSDK-6.0 -Version 2.0.0
         Install-Package MySql.Data -Version 6.9.12
         Install-Package Newtonsoft.Json -Version 13.0.1
         ```
@@ -64,7 +69,7 @@ You can include the SDK to your project using:
     - .NET  CLI
 
         ```sh
-        dotnet add package ZOHOCRMSDK-6.0 --version 1.0.0
+        dotnet add package ZOHOCRMSDK-6.0 --version 2.0.0
         dotnet add package Newtonsoft.Json --version 13.0.1
         dotnet add package MySql.Data --version 6.9.12
         ```
@@ -75,7 +80,7 @@ You can include the SDK to your project using:
 
         ```sh
         <ItemGroup>
-            <PackageReference Include="ZOHOCRMSDK-6.0" Version="1.0.0" />
+            <PackageReference Include="ZOHOCRMSDK-6.0" Version="2.0.0" />
             <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
             <PackageReference Include="MySql.Data" Version="6.9.12" />
         </ItemGroup>
@@ -95,4 +100,4 @@ For example, if you generate the tokens for your Sandbox environment in the CN d
 
 ---
 
-For more details, kindly refer [here](/versions/1.0.0/ZohoCRM/README.md).
+For more details, kindly refer [here](/versions/2.0.0/ZohoCRM/README.md).
