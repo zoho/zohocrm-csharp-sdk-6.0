@@ -25,6 +25,17 @@ License
 
 ## Latest Version
 
+- [3.0.0](/versions/3.0.0/ZohoCRM/README.md)
+
+    - Changed favorite field datatype in CustomViews.
+    - Support for the following new APIs.
+        - CustomViews
+            - [Change Sort Order of Custom Views](https://www.zoho.com/crm/developer/docs/api/v6/sort-order-cv.html)
+        - Users
+            - [Users Count](https://www.zoho.com/crm/developer/docs/api/v6/users-count.html)
+        - Features
+            - [User Licences Count](https://www.zoho.com/crm/developer/docs/api/v6/get-user-licences.html)
+
 - [2.0.0](/versions/2.0.0/ZohoCRM/README.md)
 
     - C# SDK Fields meta handling in Utility class.
@@ -60,7 +71,7 @@ You can include the SDK to your project using:
     - Package Manager
 
         ```sh
-        Install-Package ZOHOCRMSDK-6.0 -Version 2.0.0
+        Install-Package ZOHOCRMSDK-6.0 -Version 3.0.0
         Install-Package MySql.Data -Version 6.9.12
         Install-Package Newtonsoft.Json -Version 13.0.1
         ```
@@ -68,7 +79,7 @@ You can include the SDK to your project using:
     - .NET  CLI
 
         ```sh
-        dotnet add package ZOHOCRMSDK-6.0 --version 2.0.0
+        dotnet add package ZOHOCRMSDK-6.0 --version 3.0.0
         dotnet add package Newtonsoft.Json --version 13.0.1
         dotnet add package MySql.Data --version 6.9.12
         ```
@@ -79,7 +90,7 @@ You can include the SDK to your project using:
 
         ```sh
         <ItemGroup>
-            <PackageReference Include="ZOHOCRMSDK-6.0" Version="2.0.0" />
+            <PackageReference Include="ZOHOCRMSDK-6.0" Version="3.0.0" />
             <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
             <PackageReference Include="MySql.Data" Version="6.9.12" />
         </ItemGroup>
@@ -99,4 +110,4 @@ For example, if you generate the tokens for your Sandbox environment in the CN d
 
 ---
 
-For more details, kindly refer [here](/versions/2.0.0/ZohoCRM/README.md).
+For more details, kindly refer [here](/versions/3.0.0/ZohoCRM/README.md).
