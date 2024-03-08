@@ -19,7 +19,7 @@
 		<IsPackable>true</IsPackable>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageId>ZOHOCRMSDK-6.0</PackageId>
-		<PackageVersion>3.0.0</PackageVersion>
+		<PackageVersion>4.0.0</PackageVersion>
 		<Authors>Zoho CRM API Team</Authors>
 		<Owners>Zoho CRM API Team</Owners>
 		<Description>Provides C# SDK support for Zoho CRM APIs.</Description>
