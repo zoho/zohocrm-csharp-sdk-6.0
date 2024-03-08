@@ -9,7 +9,7 @@ namespace Com.Zoho.Crm.API.Layouts
 		private string displayLabel;
 		private int? sequenceNumber;
 		private bool? issubformsection;
-		private int? tabTraversal;
+		private string tabTraversal;
 		private string apiName;
 		private int? columnCount;
 		private string name;
@@ -80,17 +80,17 @@ namespace Com.Zoho.Crm.API.Layouts
 			}
 		}
 
-		public int? TabTraversal
+		public string TabTraversal
 		{
 			/// <summary>The method to get the tabTraversal</summary>
-			/// <returns>int? representing the tabTraversal</returns>
+			/// <returns>string representing the tabTraversal</returns>
 			get
 			{
 				return  this.tabTraversal;
 
 			}
 			/// <summary>The method to set the value to tabTraversal</summary>
-			/// <param name="tabTraversal">int?</param>
+			/// <param name="tabTraversal">string</param>
 			set
 			{
 				 this.tabTraversal=value;
