@@ -27,7 +27,7 @@ namespace Samples.Record.Updaterecords
 	{
 		public static void UpdatePriceBooks_1(string moduleAPIName)
 		{
-			RecordOperations recordOperations = new RecordOperations();
+			RecordOperations recordOperations = new RecordOperations(moduleAPIName);
 			BodyWrapper bodyWrapper = new BodyWrapper();
 			List<Com.Zoho.Crm.API.Record.Record> records = new List<Com.Zoho.Crm.API.Record.Record>();
 			Com.Zoho.Crm.API.Record.Record record1 =  new Com.Zoho.Crm.API.Record.Record();
@@ -125,7 +125,7 @@ namespace Samples.Record.Updaterecords
 			bodyWrapper.Data = records;
 			HeaderMap headerInstance = new HeaderMap();
 	//		headerInstance.Add (CreateRecordsHeader.X_EXTERNAL, "Quotes.Quoted_Items.Product_Name.Products_External");
-			APIResponse<ActionHandler> response = recordOperations.UpdateRecords(moduleAPIName, bodyWrapper, headerInstance);
+			APIResponse<ActionHandler> response = recordOperations.UpdateRecords(bodyWrapper, headerInstance);
 			if (response != null)
 			{
 				Console.WriteLine ("Status Code: " + response.StatusCode);
