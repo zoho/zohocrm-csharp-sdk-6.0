@@ -48,7 +48,7 @@ namespace Samples.Record.Updaterecords
 			record1.AddFieldValue(Com.Zoho.Crm.API.Record.Leads.NO_OF_EMPLOYEES, 10);
 			record1.AddFieldValue(Com.Zoho.Crm.API.Record.Leads.RATING, new Choice<string>("Active"));
 			record1.AddFieldValue(Com.Zoho.Crm.API.Record.Leads.SKYPE_ID, null);
-			record1.AddFieldValue(Com.Zoho.Crm.API.Record.Leads.SECONDARY_EMAIL, "abc1@gmail,com");
+			record1.AddFieldValue(Com.Zoho.Crm.API.Record.Leads.SECONDARY_EMAIL, "abc1@zoho.com");
 			record1.AddFieldValue(Com.Zoho.Crm.API.Record.Leads.TWITTER, null);
 			// Address info of Lead
 			record1.AddFieldValue(Com.Zoho.Crm.API.Record.Leads.CITY, "City");
