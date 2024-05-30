@@ -25,6 +25,11 @@ License
 
 ## Latest Version
 
+- [6.0.0](/versions/6.0.0/ZohoCRM/README.md)
+
+    - Blueprint Transition percentPartialSave field datatype changed(int to double).
+    - Blueprint Field convertMapping field datatype changed(ConvertMapping to Dictionary).
+
 - [5.0.0](/versions/5.0.0/ZohoCRM/README.md)
 
     - Users phone and mobile field datatype changed(long to string). 
@@ -82,7 +87,7 @@ You can include the SDK to your project using:
     - Package Manager
 
         ```sh
-        Install-Package ZOHOCRMSDK-6.0 -Version 5.0.0
+        Install-Package ZOHOCRMSDK-6.0 -Version 6.0.0
         Install-Package MySql.Data -Version 6.9.12
         Install-Package Newtonsoft.Json -Version 13.0.1
         ```
@@ -90,7 +95,7 @@ You can include the SDK to your project using:
     - .NET  CLI
 
         ```sh
-        dotnet add package ZOHOCRMSDK-6.0 --version 5.0.0
+        dotnet add package ZOHOCRMSDK-6.0 --version 6.0.0
         dotnet add package Newtonsoft.Json --version 13.0.1
         dotnet add package MySql.Data --version 6.9.12
         ```
@@ -101,7 +106,7 @@ You can include the SDK to your project using:
 
         ```sh
         <ItemGroup>
-            <PackageReference Include="ZOHOCRMSDK-6.0" Version="5.0.0" />
+            <PackageReference Include="ZOHOCRMSDK-6.0" Version="6.0.0" />
             <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
             <PackageReference Include="MySql.Data" Version="6.9.12" />
         </ItemGroup>
@@ -121,4 +126,4 @@ For example, if you generate the tokens for your Sandbox environment in the CN d
 
 ---
 
-For more details, kindly refer [here](/versions/5.0.0/ZohoCRM/README.md).
+For more details, kindly refer [here](/versions/6.0.0/ZohoCRM/README.md).
