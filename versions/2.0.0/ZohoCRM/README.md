@@ -525,15 +525,15 @@ namespace Samples
 
 ## Responses and Exceptions
 
-All SDK method calls return an instance of the **[APIResponse](ZohoCRM/Com/Zoho/Crm/API/Util/APIResponse.cs)** class
+All SDK method calls return an instance of the **[APIResponse](Com/Zoho/Crm/API/Util/APIResponse.cs)** class
 
-Use the **Object** Property in the returned **[APIResponse](ZohoCRM/Com/Zoho/Crm/API/Util/APIResponse.cs)** object to obtain the response handler interface depending on the type of request (**GET, POST,PUT,DELETE**).
+Use the **Object** Property in the returned **[APIResponse](Com/Zoho/Crm/API/Util/APIResponse.cs)** object to obtain the response handler interface depending on the type of request (**GET, POST,PUT,DELETE**).
 
 **APIResponse&lt;ResponseHandler&gt;** and **APIResponse&lt;ActionHandler&gt;** are the common wrapper objects for Zoho CRM APIs’ responses.
 
 Whenever the API returns an error response, the response will be an instance of **APIException** class.
 
-All other exceptions such as SDK anomalies and other unexpected behaviours are thrown under the **[SDKException](ZohoCRM/Com/Zoho/Crm/API/Exception/SDKException.cs)** class.
+All other exceptions such as SDK anomalies and other unexpected behaviours are thrown under the **[SDKException](Com/Zoho/Crm/API/Exception/SDKException.cs)** class.
 
 ### GET Requests
 
