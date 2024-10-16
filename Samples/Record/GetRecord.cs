@@ -31,6 +31,7 @@ using Com.Zoho.Crm.API.Util;
 using Com.Zoho.Crm.API.Dc;
 using Newtonsoft.Json;
 using System.Collections;
+using Com.Zoho.Crm.API.Record;
 
 namespace Samples.Record
 {
@@ -101,7 +102,26 @@ namespace Samples.Record
 							// To get particular field value
 							Console.WriteLine ("Record Field Value: " + record.GetKeyValue("Last_Name"));
 							Console.WriteLine ("Record KeyValues: ");
-							foreach (KeyValuePair<string, object> entry in record.GetKeyValues())
+							if(record.GetKeyValue("Quoted_Items") != null)
+							{
+                                List<Com.Zoho.Crm.API.Record.Record> quotedItems = (List<Com.Zoho.Crm.API.Record.Record>)record.GetKeyValue("Quoted_Items");
+                                foreach (Com.Zoho.Crm.API.Record.Record quotedItem in quotedItems)
+                                {
+                                    if (quotedItem.GetKeyValue("Product_Name") != null)
+									{
+										LineItemProduct product = (LineItemProduct)quotedItem.GetKeyValue("Product_Name");
+										Console.WriteLine("Quoted_Items Product Id: " + product.Id);
+                                        Console.WriteLine("Quoted_Items Product Name: " + product.Name);
+                                        Console.WriteLine("Quoted_Items Product ProductCode: " + product.ProductCode);
+                                    }
+                                    foreach (KeyValuePair<string, object> entry1 in quotedItem.GetKeyValues())
+                                    {
+                                        Console.WriteLine(entry1.Key + ": " + entry1.Value);
+                                    }
+                                }
+                            }
+
+                            foreach (KeyValuePair<string, object> entry in record.GetKeyValues())
 							{
 								string keyName = entry.Key;
 								object value = entry.Value;
@@ -399,8 +419,8 @@ namespace Samples.Record
 				Environment environment = USDataCenter.PRODUCTION;
 				IToken token = new OAuthToken.Builder().ClientId("Client_Id").ClientSecret("Client_Secret").RefreshToken("Refresh_Token").RedirectURL("Redirect_URL" ).Build();
 				new Initializer.Builder().Environment(environment).Token(token).Initialize();
-				string moduleAPIName = "Leads";
-				long recordId = 44024000774074l;
+				string moduleAPIName = "Quotes";
+				long recordId = 34770121168l;
 				string destinationFolder = "/Users/zohocrm-java-sdk-sample/file";
                 GetRecord_1(moduleAPIName, recordId, destinationFolder);
 			}
